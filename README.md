@@ -1,4 +1,10 @@
-# e-plantShopping - Paradise Nursery Shopping Cart Application
+# Paradise Nursery Shopping Cart Application
+
+**Project Name:** Paradise Nursery Shopping Cart Application (e-plantShopping)  
+**Public GitHub Repository URL:** https://github.com/chetanagrawal721/e-plantShopping  
+**README.md File URL:** https://github.com/chetanagrawal721/e-plantShopping/blob/main/README.md  
+
+---
 
 A responsive e-commerce web application developed for **Paradise Nursery**, an online plant store where green meets serenity. This project provides users with an intuitive, dynamic shopping experience to browse house plants across multiple categories, view plant details, manage a shopping cart using Redux Toolkit state management, and calculate real-time order totals.
 
@@ -36,10 +42,10 @@ The **Paradise Nursery (e-plantShopping) Shopping Cart Application** is built wi
 - **Navigation & Dynamic Cart Badge:**
   - Responsive navigation bar with company logo and brand name (`className="navbar"`).
   - Navigation links to all three views:
-    - **Home:** Clicking company branding returns the user to the landing page.
-    - **Plants:** Clicking "Plants" displays the plant product catalog.
-    - **Cart:** Clicking the cart icon toggles the shopping cart view.
-  - Cart icon with a live quantity badge displaying the total number of items currently in the cart.
+    - **Home:** Clicking company branding calls `handleParadiseNurseyClick` and returns the user to the landing page.
+    - **Plants:** Clicking "Plants" calls `handlePlantsClick` and displays the plant product catalog.
+    - **Cart:** Clicking the cart icon calls `handleCartClick` and toggles the shopping cart view.
+  - Cart icon with a live quantity badge displaying the total number of items currently in the cart (`calculateTotalQuantity`).
   - Navbar is rendered at top level and displayed consistently on both Product Listing and Cart pages.
 
 - **Shopping Cart Management (`CartItem.jsx`):**

@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+// GitHub URL: https://github.com/chetanagrawal721/e-plantShopping/blob/main/src/ProductList.jsx
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addItem } from './CartSlice';
 import './ProductList.css';
@@ -6,23 +7,19 @@ import CartItem from './CartItem';
 
 function ProductList({ onHomeClick }) {
     const [showCart, setShowCart] = useState(false);
+    const [showPlants, setShowPlants] = useState(false);
     const [addedToCart, setAddedToCart] = useState({});
 
     const dispatch = useDispatch();
     const cart = useSelector(state => state.cart.items);
 
-    // Calculate total quantity of items in the cart
-    const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
+    // Calculate total quantity of items in the cart dynamically
+    const calculateTotalQuantity = () => {
+        return cart ? cart.reduce((total, item) => total + item.quantity, 0) : 0;
+    };
+    const totalQuantity = calculateTotalQuantity();
 
-    // Keep addedToCart synced with the cart state
-    useEffect(() => {
-        const newAdded = {};
-        cart.forEach(item => {
-            newAdded[item.name] = true;
-        });
-        setAddedToCart(newAdded);
-    }, [cart]);
-
+    // Add plant to cart and disable button
     const handleAddToCart = (plant) => {
         dispatch(addItem(plant));
         setAddedToCart((prevState) => ({
@@ -262,39 +259,56 @@ function ProductList({ onHomeClick }) {
         textDecoration: 'none',
     };
 
-    const handleHomeClick = (e) => {
+    // Navigation handler for Paradise Nursery heading to return to Home landing page
+    const handleParadiseNurseyClick = (e) => {
         e.preventDefault();
+        setShowCart(false);
+        setShowPlants(false);
         if (onHomeClick) {
             onHomeClick();
         }
     };
 
+    const handleParadiseNurseryClick = (e) => {
+        handleParadiseNurseyClick(e);
+    };
+
+    const handleHomeClick = (e) => {
+        handleParadiseNurseyClick(e);
+    };
+
+    // Navigation handler for Cart icon click
     const handleCartClick = (e) => {
         e.preventDefault();
-        setShowCart(true); // Set showCart to true when cart icon is clicked
+        setShowCart(true);
+        setShowPlants(false);
     };
 
+    // Navigation handler for Plants link click
     const handlePlantsClick = (e) => {
         e.preventDefault();
-        setShowCart(false); // Hide the cart when navigating to Plants view
+        setShowPlants(true);
+        setShowCart(false);
     };
 
+    // Navigation handler to continue shopping from cart
     const handleContinueShopping = (e) => {
         if (e && e.preventDefault) {
             e.preventDefault();
         }
         setShowCart(false);
+        setShowPlants(true);
     };
 
     return (
         <div>
-            {/* Navbar is displayed consistently across both the Product Listing and Cart pages */}
+            {/* Navbar component implemented and displayed consistently on both Product Listing and Cart pages */}
             <div className="navbar" style={styleObj}>
                 <div className="tag">
                     <div className="luxury">
                         <img src="https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_1280.png" alt="" />
-                        {/* Navigation link to Home page */}
-                        <a href="/" onClick={(e) => handleHomeClick(e)}>
+                        {/* Navigation link to Home page via handleParadiseNurseyClick */}
+                        <a href="/" onClick={(e) => handleParadiseNurseyClick(e)}>
                             <div>
                                 <h3 style={{ color: 'white' }}>Paradise Nursery</h3>
                                 <i style={{ color: 'white' }}>Where Green Meets Serenity</i>
@@ -303,11 +317,11 @@ function ProductList({ onHomeClick }) {
                     </div>
                 </div>
                 <div style={styleObjUl}>
-                    {/* Navigation link to Plants page */}
+                    {/* Navigation link to Plants page via handlePlantsClick */}
                     <div>
                         <a href="#" onClick={(e) => handlePlantsClick(e)} style={styleA}>Plants</a>
                     </div>
-                    {/* Navigation link to Cart page */}
+                    {/* Navigation link to Cart page via handleCartClick */}
                     <div>
                         <a href="#" onClick={(e) => handleCartClick(e)} style={styleA}>
                             <h1 className='cart'>
@@ -317,7 +331,8 @@ function ProductList({ onHomeClick }) {
                                     <circle cx="184" cy="216" r="12"></circle>
                                     <path d="M42.3,72H221.7l-26.4,92.4A15.9,15.9,0,0,1,179.9,176H84.1a15.9,15.9,0,0,1-15.4-11.6L32.5,37.8A8,8,0,0,0,24.8,32H8" fill="none" stroke="#faf9f9" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" id="mainIconPathAttribute"></path>
                                 </svg>
-                                <span className="cart_quantity_count">{totalQuantity}</span>
+                                {/* Shopping cart icon dynamically displaying total quantity */}
+                                <span className="cart_quantity_count">{calculateTotalQuantity()}</span>
                             </h1>
                         </a>
                     </div>
