@@ -1,4 +1,4 @@
-# Paradise Nursery Shopping Cart Application
+# e-plantShopping - Paradise Nursery Shopping Cart Application
 
 A responsive e-commerce web application developed for **Paradise Nursery**, an online plant store where green meets serenity. This project provides users with an intuitive, dynamic shopping experience to browse house plants across multiple categories, view plant details, manage a shopping cart using Redux Toolkit state management, and calculate real-time order totals.
 
@@ -6,7 +6,7 @@ A responsive e-commerce web application developed for **Paradise Nursery**, an o
 
 ## 🌿 Project Overview
 
-The **Paradise Nursery Shopping Cart Application** is built with **React**, **Vite**, and **Redux Toolkit**. It allows users to:
+The **Paradise Nursery (e-plantShopping) Shopping Cart Application** is built with **React**, **Vite**, and **Redux Toolkit**. It allows users to:
 1. Land on an engaging homepage introducing Paradise Nursery, its values, and mission.
 2. Browse a rich catalog of house plants grouped logically into five distinct categories.
 3. Add plants to their shopping cart with instant UI feedback (button changes to "Added to Cart" and becomes disabled).
@@ -17,27 +17,30 @@ The **Paradise Nursery Shopping Cart Application** is built with **React**, **Vi
 
 ## ✨ Features
 
-- **Landing Page:**
-  - Full-screen scenic greenhouse background image.
+- **Landing Page (`App.jsx` & `App.css`):**
+  - Full-screen scenic greenhouse background image (`.background-image`).
   - Company branding: "Welcome To Paradise Nursery" and tagline "Where Green Meets Serenity".
   - Informative "About Us" section highlighting plant benefits and company background.
   - Interactive "Get Started" button to transition into the plant shop.
 
 - **Product Catalog (`ProductList.jsx`):**
-  - Grouped categories:
+  - Grouped categories with headings:
     - *Air Purifying Plants* (Snake Plant, Spider Plant, Peace Lily, Boston Fern, Rubber Plant, Aloe Vera)
     - *Aromatic Fragrant Plants* (Lavender, Jasmine, Rosemary, Mint, Lemon Balm, Hyacinth)
     - *Insect Repellent Plants* (Oregano, Marigold, Geraniums, Basil, Lavender, Catnip)
     - *Medicinal Plants* (Aloe Vera, Echinacea, Peppermint, Lemon Balm, Chamomile, Calendula)
     - *Low Maintenance Plants* (ZZ Plant, Pothos, Snake Plant, Cast Iron Plant, Succulents, Aglaonema)
   - Detailed product cards containing plant thumbnail, name, description, unit price, and an "Add to Cart" button.
-  - State tracking: Buttons dynamically show "Added to Cart" and disable once an item is added to the cart.
+  - State tracking: Buttons dynamically show "Added to Cart" and disable once an item is added to the cart using `addedToCart[plant.name]`.
 
 - **Navigation & Dynamic Cart Badge:**
-  - Responsive navigation bar with company logo and brand name.
-  - Clicking company name returns the user to the landing page.
-  - "Plants" link to switch back to catalog browsing.
+  - Responsive navigation bar with company logo and brand name (`className="navbar"`).
+  - Navigation links to all three views:
+    - **Home:** Clicking company branding returns the user to the landing page.
+    - **Plants:** Clicking "Plants" displays the plant product catalog.
+    - **Cart:** Clicking the cart icon toggles the shopping cart view.
   - Cart icon with a live quantity badge displaying the total number of items currently in the cart.
+  - Navbar is rendered at top level and displayed consistently on both Product Listing and Cart pages.
 
 - **Shopping Cart Management (`CartItem.jsx`):**
   - Complete list of added items showing thumbnail, title, and unit price.
@@ -70,7 +73,7 @@ The **Paradise Nursery Shopping Cart Application** is built with **React**, **Vi
 ## 📁 Project Structure
 
 ```
-shopping-cart-application/
+e-plantShopping/
 ├── public/
 │   └── vite.svg
 ├── src/
@@ -106,8 +109,8 @@ shopping-cart-application/
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/chetanagrawal721/shopping-cart-application.git
-   cd shopping-cart-application
+   git clone https://github.com/chetanagrawal721/e-plantShopping.git
+   cd e-plantShopping
    ```
 
 2. Install the dependencies:

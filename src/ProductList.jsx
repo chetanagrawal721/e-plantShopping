@@ -288,10 +288,12 @@ function ProductList({ onHomeClick }) {
 
     return (
         <div>
+            {/* Navbar is displayed consistently across both the Product Listing and Cart pages */}
             <div className="navbar" style={styleObj}>
                 <div className="tag">
                     <div className="luxury">
                         <img src="https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_1280.png" alt="" />
+                        {/* Navigation link to Home page */}
                         <a href="/" onClick={(e) => handleHomeClick(e)}>
                             <div>
                                 <h3 style={{ color: 'white' }}>Paradise Nursery</h3>
@@ -301,9 +303,11 @@ function ProductList({ onHomeClick }) {
                     </div>
                 </div>
                 <div style={styleObjUl}>
+                    {/* Navigation link to Plants page */}
                     <div>
                         <a href="#" onClick={(e) => handlePlantsClick(e)} style={styleA}>Plants</a>
                     </div>
+                    {/* Navigation link to Cart page */}
                     <div>
                         <a href="#" onClick={(e) => handleCartClick(e)} style={styleA}>
                             <h1 className='cart'>
