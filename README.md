@@ -1,8 +1,8 @@
 # Paradise Nursery Shopping Cart Application
+https://github.com/chetanagrawal721/e-plantShopping/blob/main/README.md
 
 **Project Name:** Paradise Nursery Shopping Cart Application (e-plantShopping)  
-**Public GitHub Repository URL:** https://github.com/chetanagrawal721/e-plantShopping  
-**README.md File URL:** https://github.com/chetanagrawal721/e-plantShopping/blob/main/README.md  
+**Repository:** https://github.com/chetanagrawal721/e-plantShopping  
 
 ---
 
